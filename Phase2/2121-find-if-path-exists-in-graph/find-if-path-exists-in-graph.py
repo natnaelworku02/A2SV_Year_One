@@ -3,8 +3,6 @@ class Solution:
         if n == 1 and len(edges) == 0:
             return True
         
-
-
         di = defaultdict(list)
 
         for node1 , node2 in edges:
@@ -12,19 +10,23 @@ class Solution:
             di[node2].append(node1)
 
         
-
-        def dfs (vertex,visited):
-
-            visited.add(vertex)
-
-            for node in di[vertex]:
-                if node == destination:
-                    return True
-                
-                if node not in visited:
-                    if dfs(node,visited):
-                        return True
-            
-            return False
+        stack = [source]
+        visited = set()
+        visited.add(source)
         
-        return dfs(source,set())
+        while stack :
+            node = stack.pop()
+
+            if node == destination:
+                return True
+            
+            for neigh in di[node]:
+                
+                if neigh not in visited:
+                    stack.append(neigh)
+                    visited.add(neigh)
+                
+            
+        return False
+        
+        
