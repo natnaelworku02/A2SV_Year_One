@@ -12,8 +12,7 @@ class Solution:
                     if not dfs(neigh):
                         return False
                 
-                else:
-                    if color[node] == color[neigh]:
+                elif color[node] == color[neigh]:
                         return False
                 
             
