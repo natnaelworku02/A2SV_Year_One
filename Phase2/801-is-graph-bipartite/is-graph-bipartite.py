@@ -7,12 +7,9 @@ class Solution:
             for neigh in graph[node]:
 
                 if color [neigh ]  == -1:
-                    if color[node] == 1:
-                        color[neigh] = 0
-                    else:
-                        color[neigh] = 1
+                    color [ neigh] = 1 - color[node]
                     
-                    if True and not dfs(neigh):
+                    if not dfs(neigh):
                         return False
                 
                 else:
