@@ -7,37 +7,34 @@
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
 
-        ans = []
-        level = 0
-        count = 1  
+        
+
         queue = deque()
+        res = []
 
         if root:
             queue.append(root)
         
         while queue:
+
+            ans = []
+
+            for i in range(len(queue)):
+                node = queue.popleft()
+                ans.append(node.val)
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+            # print(ans)
+
+            res.append(ans)
+
             
-            node= queue.popleft()
-            ans.append([node.val,level])
-            count -= 1
 
-            if node.left:
-                queue.append(node.left)
-            if node.right:
-                queue.append(node.right)
-            
-            if not count:
-                count = len(queue)
-                level += 1
-            
-
-        ans.sort(key = lambda x : x[1])
-
-        _max=  ans[-1][1] if ans else -1
-
-        res = [[] for _ in range(_max + 1)]
         
-        for val,ind in ans:
-            res[ind].append(val)
+
+        
+        
         
         return res
