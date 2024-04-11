@@ -10,36 +10,31 @@ class Solution:
         # print(di)
 
         ans = [-1] * n
-        for i in range(n):
 
-            count = 0
-            flag = False
-            queue = deque()
-            visited= set()
-            queue.append([0,0])
-            queue.append([0,1])
+        count = 0
+        flag = False
+        queue = deque()
+        visited= set()
+        queue.append([0,0])
+        queue.append([0,1])
 
-            while queue:
-                for _ in range(len(queue)):
-                    node,color = queue.popleft()
-                    # print(color,node,i)
-                    if node == i:
-                        # print("hi",count)
-                        flag = True
-                        break
-                    
-                    for ind, col in di[node]:
-                        if col != color and (ind,col) not in visited:
-                            # print(ind,col)
-                            queue.append([ind,col])
-                            visited.add((ind,col))
-                    # print("_________")
-                if flag:
-                    ans[i] = count
-                    break
+        while queue:
+            for _ in range(len(queue)):
+                node,color = queue.popleft()
+                # print(color,node,i)
+                if ans[node] == -1:
+                    ans[node] = count
                 
-                # ans[i] = count if flag else -1
-                count += 1
+                for ind, col in di[node]:
+                    if col != color and (ind,col) not in visited:
+                        # print(ind,col)
+                        queue.append([ind,col])
+                        visited.add((ind,col))
+                # print("_________")
+            
+            
+            # ans[i] = count if flag else -1
+            count += 1
         
         return ans
             
