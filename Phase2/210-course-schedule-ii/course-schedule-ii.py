@@ -14,15 +14,15 @@ class Solution:
                 queue.append(i)
         # print(queue)
         ans = []
+        count = 0
         while queue:
             for i in range(len(queue)):
                 node = queue.popleft()
                 ans.append(node)
+                count += 1
                 for ind in adjlist[node]:
                     indeg[ind] -= 1
                     if indeg[ind] == 0:
                         queue.append(ind)
-        for count in indeg:
-            if count > 0:
-                return []
-        return ans
+        # if 
+        return ans if count == numCourses else []
