@@ -8,10 +8,8 @@ class Solution:
             if ind >= len(nums):
                 return 0
             if ind not in memo:
-                # re
                 temp = 0
                 for i in range(ind+1,len(nums)):
-
                     if nums[ind] < nums[i]:
                         temp = max(temp,dp(i))
                 
@@ -20,7 +18,7 @@ class Solution:
             return memo[ind]
         
         ans = 0
-        for i in range(len(nums)):
+        for i in range(len(nums) - 1, -1,- 1):
             if i not in memo:
                 ans = max(ans,dp(i))
         
