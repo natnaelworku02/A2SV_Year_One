@@ -13,7 +13,7 @@ class Solution:
             
             left = helper(node.left)
             right = helper(node.right)
-            print(left,right,ans,node)
+            # print(left,right,ans,node)
             ans += abs(left) + abs(right)
             val = node.val - 1
             val += left + right
