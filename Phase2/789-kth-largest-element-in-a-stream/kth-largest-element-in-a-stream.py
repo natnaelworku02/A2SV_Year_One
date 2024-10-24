@@ -6,13 +6,11 @@ class KthLargest:
         heapq.heapify(self.heap)
 
     def add(self, val: int) -> int:
-        if len(self.heap)<self.k:
-            heapq.heappush(self.heap,val)
-        elif val>self.heap[0]:
-            heapq.heappop(self.heap)
-            heapq.heappush(self.heap,val)
-        # heapq.heap_sort(self.heap)
-        # print(self.heap)
+        if len(self.heap) < self.k:
+            heappush(self.heap,val)
+        elif self.heap[0] < val:
+            heapreplace(self.heap,val)
+
         return self.heap[0]
         
 
